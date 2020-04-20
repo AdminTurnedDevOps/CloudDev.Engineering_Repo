@@ -21,23 +21,19 @@ resource "azurerm_virtual_machine" "CloudDevVM" {
   }
 
   storage_os_disk {
-    name              = "disk1"
+    name              = "disk1${count.index}"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
 
   os_profile {
-    computer_name  = "clouddev01"
+    computer_name  = "clouddev-${count.index}"
     admin_username = "azureuser"
+    admin_password = "Password1234!"
   }
-
   os_profile_linux_config {
-    disable_password_authentication = true
-    ssh_keys {
-      path     = "/home/azureuser/.ssh/authorized_keys"
-      key_data = file("~/.ssh/azure.pub")
-    }
+    disable_password_authentication = false
   }
   tags = {
     environment = "development",
