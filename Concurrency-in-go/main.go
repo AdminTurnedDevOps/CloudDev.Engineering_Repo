@@ -6,13 +6,11 @@ import (
 )
 
 func main() {
-
 	go sayGo()
 
 	time.Sleep(2 * time.Second)
 
 	number(2)
-
 }
 
 func number(two int) {
