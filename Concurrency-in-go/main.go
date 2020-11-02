@@ -11,12 +11,11 @@ func main() {
 
 	time.Sleep(2 * time.Second)
 
-	addition(2)
+	number(2)
 
 }
 
-func addition(two int) {
-
+func number(two int) {
 	num := two
 	fmt.Println(num)
 }
